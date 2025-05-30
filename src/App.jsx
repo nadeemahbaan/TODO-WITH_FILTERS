@@ -1,12 +1,21 @@
-import React from 'react'
-import TodoForm from './Components/TodoForm'
+import React, { useState } from "react";
+import TodoForm from "./Components/TodoForm";
+import TodoList from "./Components/TodoList";
 
-function App() {
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+
+  const handleAddTask = (task) => {
+    setTasks([...tasks, task]);
+  };
+
   return (
     <div>
-      <TodoForm />
+      <h1>📝 To-Do List with Filters</h1>
+      <TodoForm onAddTask={handleAddTask} />
+      <TodoList tasks={tasks} />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
